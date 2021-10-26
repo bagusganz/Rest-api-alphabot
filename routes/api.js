@@ -30,9 +30,6 @@ var { fetchJson } = require(__path + '/lib/fetcher.js')
 var { lirikLagu } = require('../lib/lirik.js')
 var { mediafireDl } = require('../lib/mediafire.js')
 var { igDownloader } = require('../lib/igdown.js')
-var nhentai = require('nhentai-js');
-const NanaAPI = require('nana-api')
-const nana = new NanaAPI()
 var options = require(__path + '/lib/options.js');
 var {
 	Vokal,
