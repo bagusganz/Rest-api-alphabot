@@ -3,7 +3,7 @@
 
 <html><head>
 
-<title> Alphabot-Api </title>
+<title> Bagus - Home Api's </title>
 
 <meta charset="UTF-8"> 
 
@@ -15,15 +15,15 @@
 
 <meta name="googlebot" content="index,follow">
 
-<meta property="og:title" content="Api-Alphabot"/>  
+<meta property="og:title" content="Api-Yuzzu"/>  
 
 <meta name="description" content="Sedang Berusaha Untuk Memperbaiki Diri"> 
 
-<meta property="og:image" content="https://e.top4top.io/p_2010lz9211.jpg">
-
-<link rel="shortcut icon" href="https://e.top4top.io/p_2010lz9211.jpg" />  
+<meta property="og:image" content="https://h.top4top.io/p_20937qgzm0.jpg">
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<audio id='bgMusic' src='https://media1.vocaroo.com/mp3/1idruo23SivM' loop></audio>
 
 <script src="https://cdn.rawgit.com/bungfrangki/efeksalju/2a7805c7/efek-salju.js" type="text/javascript"> </script><br><br><br>
 
@@ -31,23 +31,38 @@
 
   <td align="center">
 
-        <div class="time">
-
-        <span id="jam">00</span> : 
-
-        <span id="menit">00</span> : 
-
-        <span id="detik">00</span> &nbsp;
-
-        <span id="locale">WIB</span>
-
-      </div>
 
       <div id="sayings">Ucapan</div>
+      <style>
+body.friendly {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOnTFFBewh7qnzvdsSX1EsXwmBcq5_Fa8mIg&usqp=CAU");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100%;
+
+}
+body.friendly .message__title {
+  color: #FFFFFF; }
+
+body.friendly p {
+  color: rgba(255, 255, 255, 0.6); }
+
+body.friendly .hk-logo, body.friendly .app-icon {
+  fill: rgba(255, 255, 255, 0.9); }
+
+body.friendly .info {
+  fill: rgba(255, 255, 255, 0.9); }
+
+body.friendly .btn {
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.9); }
+      </style>
 
 </head>
 
-<body oncontextmenu='return false;' onkeydown='return false;' onmousedown='return false;'> 
+<body class="friendly" oncontextmenu='return false;' onkeydown='return false;' onmousedown='return false;'> 
 
 <script type="text/javascript">
 
@@ -109,7 +124,7 @@ function details() {window.open(""); window.open("");}
 
 <style type="text/css">
 
-@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Grenze+Gotisch:wght@900&family=Jolly+Lodger&family=New+Rocker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@600&display=swap');
 
 * {
 
@@ -123,7 +138,7 @@ function details() {window.open(""); window.open("");}
 
    body {
 
- font-family: 'New Rocker',cursive;
+ font-family: 'Cabin', sans-serif;
 
 background: black;
 
@@ -135,7 +150,7 @@ width: 100%; height: 100%; }
 
 .blink {
 
-font-family: 'New Rocker',cursive;
+font-family: 'Cabin', sans-serif;
 
 -webkit-animation-name: zeeone;
 
@@ -199,7 +214,7 @@ font-family: 'New Rocker',cursive;
 
    font-size: 25px;
 
-   font-family: 'Grenze Gotisch', cursive;
+   font-family: 'Cabin', sans-serif;
 
  }
 
@@ -213,7 +228,7 @@ font-family: 'New Rocker',cursive;
 
  text-size: 7px;
 
- font-family: 'Grenze Gotisch',cursive;
+ font-family: 'Cabin', sans-serif;
 
  }
 
@@ -236,6 +251,7 @@ font-family: 'New Rocker',cursive;
  .one {
 
  color: white;
+ width: 10px;
 
  }
 
@@ -243,11 +259,11 @@ font-family: 'New Rocker',cursive;
 
  border-radius: 5px;
 
- -webkit-filter-box: drop-shadow(0px 1px 0px red);
+ -webkit-filter-box: drop-shadow(0px 1px 0px black);
 
- -webkit-filter: drop-shadow(0px 0px 7px red); 
+ -webkit-filter: drop-shadow(0px 0px 7px black); 
 
- filter: drop-shadow(0px 0px 7px red); 
+ filter: drop-shadow(0px 0px 7px black); 
 
  }
 
@@ -280,8 +296,17 @@ font-family: 'New Rocker',cursive;
  animation: ONE 5s linear infinite;
 
  }
-
  
+ .ml2 {
+  font-weight: 900;
+  font-size: 1.0em;
+  color: #7C5762;
+}
+
+.ml2 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
 
  @keyframes ONE {
 
@@ -311,7 +336,7 @@ font-family: 'New Rocker',cursive;
 
 #locale {
 
-  color: red;
+  color: #7C5762;
 
   font-size: 50px;
 
@@ -324,33 +349,49 @@ font-family: 'New Rocker',cursive;
   font-size: 30px;
 
 }
+#uwu {
+
+  color: #7C5762;
+
+  font-size: 30px;
+
+}
+.yuzz {
+    border-radius: 10px;
+    box-shadow:2px 2px 5px black;
+}
+
+.animasi{
+
+	transition: all 0.1s;
+
+	-webkit-trantition: all 0.1s;
+}
+.tombol-aktif{
+	padding: 10px 30px;
+	border-radius: 10px;
+	margin-top: 250;
+	font-size: 15px;
+	color: #fff;
+	text-decoration: none;
+}
+.biru{
+	background-color: #3498BD;
+}
+.putih{
+    color: white;
+}
 
 </style>
 
 <center>
-
-<img class="image" src="https://d.top4top.io/p_20446o69o1.jpg" height="860" width="709"><br>
-
-<div class="blink">
-
-<div id="back"><font size="20">
-
-<b>
-
-  <span class="one">REST API</span><span class="two"> ALPHABOT</span>
-
-  </b
-
-</font>
-
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<div>
+<h3 class="putih"> ONLINE</h3>
+   <a href="/api" class="tombol-aktif animasi biru"                             onclick='music()'>Documentation</a> 
 </div>
-
-</div>
-
-<br>
-
-<a id="one" href="/api">DOCUMENTATION</a>
-
 <script type="text/javascript">
 
 Sayings = "";
@@ -397,12 +438,38 @@ window.setTimeout("waktu()", 1000);
 		document.getElementById("detik").innerHTML = waktu.getSeconds();
 
 	}
+	
+	var textWrapper = document.querySelector('.ml2');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml2 .letter',
+    scale: [4,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 950,
+    delay: (el, i) => 70*i
+  }).add({
+    targets: '.ml2',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+
+var audioPlaying = false;
+        function music(){
+        var audio = document.getElementById("bgMusic");
+        if (!audioPlaying) audio.play();
+        else audio.pause();
+        audioPlaying = !audioPlaying;
+        }
     </script>
 
-    <!--<audio autoplay="true" src="https://j.top4top.io/m_1772xeikf9.mp3"></audio>-->
+    <!--<audio autoplay="true" src="https://e.top4top.io/m_2093ct1020.mp3"></audio>-->
 
-    <b><h2 id="one"><marquee width="70%">Jika suka dengan api ini tolong bantu subscribe youtube ZEEONE OFC Terima Kasih 😇</marquee></h2></b>
 
    </body>
 
