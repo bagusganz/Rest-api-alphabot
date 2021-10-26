@@ -270,18 +270,23 @@ router.get('/remove', (req, res, next) => {
 /*
 =====> GACHA CECAN <=====
 */
-
-router.get('/random/waifu', async(req, res) => {
-	        var apikeyInput = req.query.apikey
+router.get('/random/waifu', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
-	var waif = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/waifu.json`)).data
-	const result = waif[Math.floor(Math.random() * (waif.length))]
-	data = await getBuffer(result)
-    await fs.writeFileSync(__path +'/tmp/gambar.jpg', data)
-    await res.sendFile(__path +'/tmp/gambar.jpg')
-    await sleep(3000)
-    await fs.unlinkSync(__path + '/tmp/gambar.jpg')
+       fetch(encodeURI(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/waifu.json``))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+        var result = data[Math.floor(Math.random() * data.length)];
+             res.json({
+             	author: 'Zeeone',
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
 })
 router.get('/random/husbu', async(req, res) => {
 	        var apikeyInput = req.query.apikey
