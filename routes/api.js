@@ -1306,18 +1306,6 @@ router.get('/nhentaisearch', async (req, res) => {
          	res.json(loghandler.error)
 })
 })
-router.get('/doujin', async (req, res) => {
-        var query = req.query.query
-        var hasil = await doujindesu(`${query}`)
-		    res.json({
-             	author: 'YuzzuKamiyaka',
-                 hasil
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-})
 
 router.get('/infonpm', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
