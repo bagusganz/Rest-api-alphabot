@@ -3667,8 +3667,6 @@ router.get('/maker/special/epep', async (req, res, next) => {
         var result = await getBuffer(data)
              await fs.writeFileSync(__path +'/tmp/waifu.png', result)
     await res.sendFile(__path +'/tmp/waifu.png')
-    await sleep(3000)
-    await fs.unlinkSync(__path + '/tmp/waifu.png')
 })
          
 
