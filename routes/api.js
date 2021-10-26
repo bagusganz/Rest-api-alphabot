@@ -1262,7 +1262,12 @@ router.get('/randomquote', async (req, res, next) => {
 })
 
 router.get('/nhentai', async (req, res) => {
-        var code = req.query.code
+        var apikeyInput = req.query.apikey,
+            code = req.query.code
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
+    if (!code) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})
         var result = await nhentai.getDoujin(`${code}`)
 		    res.json({
              	author: 'YuzzuKamiyaka',
@@ -1274,7 +1279,12 @@ router.get('/nhentai', async (req, res) => {
 })
 })
 router.get('/nhentaisearch', async (req, res) => {
-        var query = req.query.query
+        var apikeyInput = req.query.apikey,
+            query = req.query.query
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
+    if (!query) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})
         var hasil = await nana.search(`${query}`)
         var result = hasil.results
 		    res.json({
