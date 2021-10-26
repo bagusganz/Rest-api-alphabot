@@ -26,6 +26,9 @@ var router  = express.Router();
 
 var { color, bgcolor } = require(__path + '/lib/color.js');
 var { fetchJson } = require(__path + '/lib/fetcher.js')
+var { lirikLagu } = require('../lib/lirik.js')
+var { mediafireDl } = require('../lib/mediafire.js')
+var { igDownloader } = require('../lib/igdown.js')
 var options = require(__path + '/lib/options.js');
 var {
 	Vokal,
@@ -272,7 +275,18 @@ router.get('/remove', (req, res, next) => {
 /*
 =====> GACHA CECAN <=====
 */
-
+router.get('/random/nekonime', async(req, res, next) => {
+	        var apikeyInput = req.query.apikey
+	if(!apikeyInput) return res.json(loghandler.notparam)	
+	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
+	var waif = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/nekonime.json`)).data
+	const result = waif[Math.floor(Math.random() * (waif.length))]
+	data = await getBuffer(result)
+    await fs.writeFileSync(__path +'/tmp/gambar.jpg', data)
+    await res.sendFile(__path +'/tmp/gambar.jpg')
+    await sleep(3000)
+    await fs.unlinkSync(__path + '/tmp/gambar.jpg')
+})
 router.get('/random/waifu', async(req, res, next) => {
 	        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
@@ -1117,6 +1131,47 @@ router.get('/nsfw/yuri', async (req, res, next) => {
 })
 })
 ///NSFW END
+router.get('/mediafire', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
+    if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+
+       mediafireDl(`${url}`)
+        .then(data => {
+        var result = data;
+             res.json({
+             	author: 'YuzzuKamiyaka',
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+})
+
+router.get('/instagram', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
+    if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+
+       igDownloader(`${url}`)
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'YuzzuKamiyaka',
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+})
 router.get('/tiktod', async (req, res, next) => {
     var apikeyInput = req.query.apikey,
         url = req.query.url
@@ -2351,17 +2406,17 @@ router.get('/hilih', async (req, res, next) => {
 
 router.get('/liriklagu', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
-            lagu = req.query.lagu
-            
+            text = req.query.text
+
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
-        if(!lagu) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter kata"})
+    if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
 
-       fetch(encodeURI(`https://python-api-zhirrr.herokuapp.com/api/lirik?search=${lagu}`))
-        .then(response => response.json())
+       lirikLagu(`${text}`)
         .then(data => {
         var result = data;
              res.json({
+             	author: 'YuzzuKamiyaka',
                  result
              })
          })
@@ -2724,10 +2779,11 @@ router.get('/kuis/caklontong', async (req, res, next) => {
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
 
-       fetch(encodeURI(`https://docs-api-zahirrr.herokuapp.com/api/quote?type=caklontong`))
+       fetch(encodeURI(`https://raw.githubusercontent.com/YuzzuKamiyaka/database-api/main/fun/caklontong.json`))
         .then(response => response.json())
         .then(data => {
         var result = data;
+        var result = data[Math.floor(Math.random() * data.length)];
              res.json({
                  result
              })
@@ -2744,10 +2800,11 @@ router.get('/kuis/tebakgambar', async (req, res, next) => {
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
 
-       fetch(encodeURI(`https://docs-api-zahirrr.herokuapp.com/api/quote?type=tebakgambar`))
+       fetch(encodeURI(`https://raw.githubusercontent.com/YuzzuKamiyaka/database-api/main/fun/tebakgambar.json`))
         .then(response => response.json())
         .then(data => {
         var result = data;
+        var result = data[Math.floor(Math.random() * data.length)];
              res.json({
                  result
              })
