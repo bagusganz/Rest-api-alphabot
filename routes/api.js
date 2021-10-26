@@ -3653,27 +3653,18 @@ router.get('/maker/special/transformer', async (req, res, next) => {
 })
 })
 
-
-router.get('/maker/special/epep', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
+router.get('/maker/special/epep', async(req, res) => {
+	var apikeyInput = req.query.apikey,
             text = req.query.text
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
-    if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
-
-       fetch(encodeURI(`https://textmaker-api-zahirr.herokuapp.com/api/special/sertifikatepep?text=${text}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'Zeeone',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
+	var result = (await axios.get(`https://textmaker-api-zahirr.herokuapp.com/api/special/sertifikatepep?text=${text}`)).data
+	data = await getBuffer(result)
+    await fs.writeFileSync(__path +'/tmp/waifu.png', data)
+    await res.sendFile(__path +'/tmp/waifu.png')
+    await sleep(3000)
+    await fs.unlinkSync(__path + '/tmp/waifu.png')
 })
 
 
