@@ -30,6 +30,9 @@ var { fetchJson } = require(__path + '/lib/fetcher.js')
 var { lirikLagu } = require('../lib/lirik.js')
 var { mediafireDl } = require('../lib/mediafire.js')
 var { igDownloader } = require('../lib/igdown.js')
+var nhentai = require('nhentai-js');
+const NanaAPI = require('nana-api')
+const nana = new NanaAPI()
 var options = require(__path + '/lib/options.js');
 var {
 	Vokal,
@@ -1257,7 +1260,64 @@ router.get('/randomquote', async (req, res, next) => {
          	res.json(loghandler.error)
 })
 })
+router.get('/nhentai', async (req, res, next) => {
+        var apikeyInput = req.query.code,
+            url = req.query.url
 
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
+    if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+
+       igDownloader(`${url}`)
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'YuzzuKamiyaka',
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+})
+
+router.get('/nhentai', async (req, res) => {
+        var code = req.query.code
+        var result = await nhentai.getDoujin(`${code}`)
+		    res.json({
+             	author: 'YuzzuKamiyaka',
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+})
+router.get('/nhentaisearch', async (req, res) => {
+        var query = req.query.query
+        var hasil = await nana.search(`${query}`)
+        var result = hasil.results
+		    res.json({
+             	author: 'YuzzuKamiyaka',
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+})
+router.get('/doujin', async (req, res) => {
+        var query = req.query.query
+        var hasil = await doujindesu(`${query}`)
+		    res.json({
+             	author: 'YuzzuKamiyaka',
+                 hasil
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+})
 
 router.get('/infonpm', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
