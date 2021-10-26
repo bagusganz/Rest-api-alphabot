@@ -270,25 +270,20 @@ router.get('/remove', (req, res, next) => {
 /*
 =====> GACHA CECAN <=====
 */
-router.get('/random/waifu', async (req, res, next) => {
-        var apikeyInput = req.query.apikey
+
+router.get('/random/waifu', async(req, res, next) => {
+	        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
-       fetch(encodeURI(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/waifu.json``))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-        var result = data[Math.floor(Math.random() * data.length)];
-             res.json({
-             	author: 'Zeeone',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
+	var waif = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/waifu.json`)).data
+	const result = waif[Math.floor(Math.random() * (waif.length))]
+	data = await getBuffer(result)
+    await fs.writeFileSync(__path +'/tmp/gambar.jpg', data)
+    await res.sendFile(__path +'/tmp/gambar.jpg')
+    await sleep(3000)
+    await fs.unlinkSync(__path + '/tmp/gambar.jpg')
 })
-})
-router.get('/random/husbu', async(req, res) => {
+router.get('/random/husbu', async(req, res, next) => {
 	        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
@@ -300,7 +295,7 @@ router.get('/random/husbu', async(req, res) => {
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/gambar.jpg')
 })
-router.get('/random/loli', async(req, res) => {
+router.get('/random/loli', async(req, res, next) => {
 	        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
@@ -312,7 +307,7 @@ router.get('/random/loli', async(req, res) => {
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/gambar.jpg')
 })
-router.get('/random/milf', async(req, res) => {
+router.get('/random/milf', async(req, res, next) => {
 	        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
@@ -324,7 +319,7 @@ router.get('/random/milf', async(req, res) => {
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/gambar.jpg')
 })
-router.get('/random/cosplay', async(req, res) => {
+router.get('/random/cosplay', async(req, res, next) => {
 	        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
@@ -336,7 +331,7 @@ router.get('/random/cosplay', async(req, res) => {
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/gambar.jpg')
 })
-router.get('/random/cecan', async(req, res) => {
+router.get('/random/cecan', async(req, res, next) => {
 	        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
@@ -348,7 +343,7 @@ router.get('/random/cecan', async(req, res) => {
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/gambar.jpg')
 })
-router.get('/random/esteticpic', async(req, res) => {
+router.get('/random/esteticpic', async(req, res, next) => {
 	        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
@@ -360,7 +355,7 @@ router.get('/random/esteticpic', async(req, res) => {
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/gambar.jpg')
 })
-router.get('/random/darkjoke', async(req, res) => {
+router.get('/random/darkjoke', async(req, res, next) => {
 	        var apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
