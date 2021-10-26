@@ -1260,26 +1260,6 @@ router.get('/randomquote', async (req, res, next) => {
          	res.json(loghandler.error)
 })
 })
-router.get('/nhentai', async (req, res, next) => {
-        var apikeyInput = req.query.code,
-            url = req.query.url
-
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
-    if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
-
-       igDownloader(`${url}`)
-        .then(data => {
-        var result = data.result;
-             res.json({
-             	author: 'YuzzuKamiyaka',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-})
 
 router.get('/nhentai', async (req, res) => {
         var code = req.query.code
@@ -1300,6 +1280,18 @@ router.get('/nhentaisearch', async (req, res) => {
 		    res.json({
              	author: 'YuzzuKamiyaka',
                  result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+})
+router.get('/doujin', async (req, res) => {
+        var query = req.query.query
+        var hasil = await doujindesu(`${query}`)
+		    res.json({
+             	author: 'YuzzuKamiyaka',
+                 hasil
              })
          })
          .catch(e => {
