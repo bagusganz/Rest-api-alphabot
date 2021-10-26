@@ -3660,15 +3660,16 @@ router.get('/maker/special/epep', async (req, res, next) => {
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
+    if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
 
        fetch(encodeURI(`https://textmaker-api-zahirr.herokuapp.com/api/special/sertifikatepep?text=${text}`))
         .then(response => response.json())
         .then(data => {
-        var result = await getBuffer(data)
-             await fs.writeFileSync(__path +'/tmp/waifu.png', result)
-    await res.sendFile(__path +'/tmp/waifu.png')
-})
-         
+        var result = data;
+             res.json({
+             	author: 'bagusgans',
+                 result
+             })
 
 
 module.exports = router
