@@ -25,6 +25,7 @@ var TikTokScraper = require('tiktok-scraper');
 var router  = express.Router();
 
 var { color, bgcolor } = require(__path + '/lib/color.js');
+var { TiktokDownloader } = require('../lib/tiktokdl.js')
 var { fetchJson } = require(__path + '/lib/fetcher.js')
 var { lirikLagu } = require('../lib/lirik.js')
 var { mediafireDl } = require('../lib/mediafire.js')
@@ -1172,27 +1173,43 @@ router.get('/instagram', async (req, res, next) => {
          	res.json(loghandler.error)
 })
 })
-router.get('/tiktod', async (req, res, next) => {
-    var apikeyInput = req.query.apikey,
-        url = req.query.url
-
-
-	if(!apikeyInput) return res.json(loghandler.notparam)
+router.get('/fbdownload', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            url = req.query.url
+	if(!apikeyInput) return res.json(loghandler.notparam)	
 	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
-     if (!url) return res.json(loghandler.noturl)
-
-     TikTokScraper.getVideoMeta(url, options)
-         .then(vid => {
-             console.log(vid)
+       fetch(encodeURI(`https://hardianto-chan.herokuapp.com/api/fbdl?url=${url}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
              res.json({
-                 status: true,
-                 creator: `${creator}`,
-                 videoNoWm: vid
+             	author: 'YuzzuKamiyaka',
+                 result
              })
          })
          .catch(e => {
-             res.json(loghandler.invalidlink)
+         	res.json(loghandler.error)
+})
+})
+router.get('/tiktok', async (req, res, next) => {
+        var apikeyInput = req.query.apikey,
+            url = req.query.url
+
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
+    if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+
+       TiktokDownloader(`${url}`)
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'YuzzuKamiyaka',
+                 result
+             })
          })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
 })
 
 router.get('/tiktod/stalk', async (req, res, next) => {
