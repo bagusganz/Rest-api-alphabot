@@ -1,5 +1,7 @@
 __path = process.cwd()
-//var favicon = require('serve-favicon');
+const { getBuffer } = require('../lib/function')
+const axios = require('axios')
+const fs = require('fs')
 var express = require('express');
 var db = require(__path + '/database/db');
 try {
