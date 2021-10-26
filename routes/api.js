@@ -3671,7 +3671,10 @@ router.get('/maker/special/epep', async (req, res, next) => {
                  result
              })
          })
-
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+})
 
 
 module.exports = router
