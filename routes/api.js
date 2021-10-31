@@ -1307,7 +1307,22 @@ router.get('/short/tiny', async (req, res, next) => {
          }
      })
 })
+router.get('/maker/ttp', async (req, res, next) => {
 
+  apikey = req.query.apikey;
+  if (!req.query.text) return res.json({ status: 404, error: 'masukkan parameter text'})
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)) {
+  random = new Date
+data = await fetch(`https://api.xteam.xyz/ttp?file&text=${encodeURIComponent(req.query.text)}`).then(v => v.json())
+         base64 = data.base64
+         var buffer = base64.slice(22)
+         await fs.writeFileSync(__path +`/tmp/ttp.webp`, buffer, 'base64')
+        res.sendFile(__path+'/tmp/ttp.webp')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
 router.get('/base', async (req, res, next) => {
 	var type = req.query.type,
 		encode = req.query.encode,
