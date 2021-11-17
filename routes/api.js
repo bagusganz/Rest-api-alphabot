@@ -1006,7 +1006,7 @@ router.get('/nsfw/masturbation', async (req, res, next) => {
 })
 })
 
-router.get('/nsfw/nsfwNeko', async (req, res, next) => {
+router.get('/nsfw/neko', async (req, res, next) => {
         var apikeyInput = req.query.apikey
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
