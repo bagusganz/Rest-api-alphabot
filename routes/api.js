@@ -3764,5 +3764,322 @@ router.get('/maker/special/epep', async (req, res, next) => {
 })
 })
 
+router.get('/textpro/logo-wolf', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-wolf-logo-black-white-937.html", [
+    text, text2
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/natural-leaves', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/natural-leaves-text-effect-931.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/logo-wolf2', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-wolf-logo-galaxy-online-936.html", [
+    text, text2
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/logo-wolf', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/matrix-style-text-effect-online-884.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/logo-wolf', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/firework-sparkle-text-effect-930.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/thunder', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/thunder-text-effect-online-881.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/black-pink', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-blackpink-logo-style-online-1001.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/drop-water', async(req, res, next) => {
+
+
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/dropwater-text-effect-872.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/christmas', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/create-a-christmas-holiday-snow-text-effect-1007.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/3d-gradient', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/3d-gradient-text-effect-online-free-1002.html", [
+    text,
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
+router.get('/textpro/porn-hub', async(req, res, next) => {
+
+  const apikey = req.query.apikey;
+
+  const text = req.query.text1;
+  const text2 = req.query.text2;
+  
+  if(!apikey) return res.json(loghandler.notparam)
+  if(!text) return res.json(loghandler.nottext1)
+  if(!text2) return res.json(loghandler.nottext2)
+  
+  if(listkey.includes(apikey)){
+    zrapi 
+  .textpro("https://textpro.me/pornhub-style-logo-online-generator-free-977.html", [
+    text, text2
+  ])
+  .then((data) => {
+    res.json({
+      status: true,
+      code: 200,
+      creator: `${creator}`,
+      result: data
+    })
+  })
+  .catch((err) => console.log(err));
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
 
 module.exports = router
